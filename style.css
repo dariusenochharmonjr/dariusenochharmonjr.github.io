@@ -352,7 +352,6 @@ body {
     background: darkgoldenrod;
 }
 
-
 /* =========================================
    PHONE RESPONSIVE DESIGN
    ========================================= */
@@ -393,32 +392,59 @@ body {
     /* Home */
 
     .hero {
-        padding: 0 25px;
+        position: relative;
+        min-height: 100vh;
+        height: auto;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
     }
 
     .hero-content {
-        max-width: 60%;
+        max-width: 65%;
+    }
+
+    .greeting {
+        font-size: 1rem;
+        margin-bottom: 5px;
     }
 
     .hero h1 {
         font-size: 1.5rem;
+        margin-bottom: 15px;
     }
 
     .hero h2 {
         font-size: 1.1rem;
+        margin-bottom: 18px;
     }
 
     .intro {
         font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 20px;
     }
 
+    .btn {
+        font-size: 13px;
+        padding: 10px 20px;
+    }
+
+    /* First image positioned horizontally
+       beside the Contact Me button */
+
     .darius-image {
+        position: absolute;
         right: 15px;
+        bottom: 25%;
+        margin: 0;
     }
 
     .darius-image img {
-        width: 100px;
-        margin-bottom: 80px;
+        width: 85px;
+        height: auto;
+        margin-bottom: 0;
+        border-radius: 600px;
     }
 
 
