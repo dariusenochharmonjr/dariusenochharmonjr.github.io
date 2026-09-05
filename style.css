@@ -1,58 +1,74 @@
-/* The Logo and Navigation Configuration */
-
-.logo img {
-    height: 190px;
-    width: auto;
-    display: flex;
+/* ======================================== */
+/* GLOBAL & RESET */
+/* ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-image: url("background.JPG");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* ======================================== */
+/* NAVIGATION (Desktop - Balanced Size) */
+/* ======================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 80px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.logo img {
+    height: 100px; /* Reduced from 150px - better proportion */
+    width: auto;
+    display: block;
 }
 
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 30px;
-    margin-left: 120px;
+    gap: 35px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 22px; /* Reduced from 24px */
+    font-weight: 600;
+    transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
     color: #009acd;
 }
 
-.navbar {
-    display: flex;
-    gap: 180px;
-    align-items: center;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: white;
-    font-size: 30px;
-    font-weight: 500;
-}
-
-
-/* Introductory Body */
-
+/* ======================================== */
+/* HERO SECTION */
+/* ======================================== */
 .hero {
     position: relative;
-    height: 100vh;
+    min-height: calc(100vh - 140px); /* Account for navbar height */
     display: flex;
-    align-items: flex-start;
-    padding: 0 80px;
-    color: white;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 80px 80px; /* Better spacing */
 }
 
 .hero-content {
     max-width: 600px;
+    z-index: 2;
 }
 
 .hero-content span {
@@ -60,145 +76,115 @@ body {
 }
 
 .greeting {
-    font-size: 1.5rem;
-    margin-bottom: 5px;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #e0e0e0;
 }
 
 .hero h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    line-height: 1.2;
 }
 
 .hero h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: #00bfff;
     margin-bottom: 25px;
+    font-weight: 500;
+    line-height: 1.4;
 }
 
 .intro {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     line-height: 1.7;
     margin-bottom: 35px;
+    color: #f0f0f0;
 }
 
 .btn {
-    font-size: 14px;
+    font-size: 18px;
     display: inline-block;
-    padding: 12px 30px;
+    padding: 15px 40px;
     background: #00bfff;
+    color: white;
     text-decoration: none;
     border-radius: 60px;
     transition: 0.3s;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .btn:hover {
     background: #009acd;
+    transform: translateY(-3px);
 }
 
-
-/* My Image */
-
 .darius-image {
-    position: absolute;
-    right: 50px;
-    bottom: 0;
+    position: relative;
+    z-index: 1;
 }
 
 .darius-image img {
     cursor: pointer;
-    width: 200px;
+    width: 320px; 
     height: auto;
-    border-radius: 600px;
-    margin-bottom: 200px;
+    border-radius: 50%;
+    border: 5px solid #00bfff;
+    box-shadow: 0 0 40px rgba(0, 191, 255, 0.5);
     transition: transform 0.4s ease;
 }
 
 .darius-image img:hover {
-    transform: translateX(-25px);
+    transform: scale(1.05);
 }
 
-
-/* Skills */
-
-.skills {
+/* ======================================== */
+/* SECTIONS GENERAL */
+/* ======================================== */
+section {
     padding: 100px 80px;
 }
 
-.skills h1 {
-    font-size: 3rem;
+.section-title {
     color: #00bfff;
-    text-align: center;
-    margin-bottom: 15px;
-}
-
-.ability-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-}
-
-.description {
-    text-align: center;
-    color: darkgoldenrod;
-    font-size: 1.1rem;
-    margin-bottom: 50px;
-}
-
-.skill {
-    background: #19d3f3;
-    color: #111;
-    padding: 15px 35px;
-    border-radius: 50px;
-    font-size: 20px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
     font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
 }
 
-.skill:hover {
-    background: white;
-    color: #00bfff;
-    transform: translateY(-15px);
-    box-shadow: 0 0 20px rgba(0, 191, 255, 0.7);
+/* ======================================== */
+/* ABOUT ME */
+/* ======================================== */
+.about {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    background: rgba(0, 0, 0, 0.4);
 }
-
-
-/* About Me */
 
 .about-image {
     flex: 1;
     display: flex;
     justify-content: center;
-    cursor: pointer;
 }
 
 .about-image img {
-    width: 350px;
+    width: 100%;
+    max-width: 400px;
     border-radius: 20px;
     box-shadow: 0 0 25px rgba(0, 191, 255, 0.4);
     transition: 0.4s ease;
 }
 
 .about-image img:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
-.section-title {
-    color: #00bfff;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    margin-bottom: 10px;
-}
-
-.about {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 60px;
-    padding: 100px 80px;
+.about-content {
+    flex: 1;
 }
 
 .about h2 {
@@ -210,28 +196,76 @@ body {
 .about p {
     font-size: 1.2rem;
     line-height: 1.8;
-    color: darkgoldenrod !important;
+    color: darkgoldenrod;
     margin-bottom: 20px;
 }
 
+/* ======================================== */
+/* SKILLS */
+/* ======================================== */
+.skills {
+    text-align: center;
+}
 
-/* Projects */
+.skills h1 {
+    font-size: 3rem;
+    color: #00bfff;
+    margin-bottom: 15px;
+}
 
+.description {
+    color: darkgoldenrod;
+    font-size: 1.2rem;
+    margin-bottom: 50px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ability-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+.skill {
+    background: rgba(25, 211, 243, 0.15);
+    color: #00bfff;
+    border: 1px solid #00bfff;
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: default;
+    transition: all 0.3s ease;
+}
+
+.skill:hover {
+    background: #00bfff;
+    color: #111;
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 191, 255, 0.3);
+}
+
+/* ======================================== */
+/* PROJECTS */
+/* ======================================== */
 .projects {
-    padding: 100px 80px;
+    background: rgba(0, 0, 0, 0.4);
+    text-align: center;
 }
 
 .projects h1 {
-    text-align: center;
     font-size: 3rem;
     color: #00bfff;
     margin-bottom: 15px;
 }
 
 .describe-projects {
-    text-align: center;
     color: darkgoldenrod;
     margin-bottom: 50px;
+    font-size: 1.2rem;
 }
 
 .project-box {
@@ -242,81 +276,94 @@ body {
 }
 
 .project {
-    width: 320px;
-    background: rgba(225, 225, 225, 0.08);
-    padding: 30px;
+    width: 350px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 35px;
     border-radius: 15px;
-    border: 1px rgba(225, 225, 225, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     transition: 0.3s;
-	box-sizing: border-box;
+    text-align: left;
 }
 
 .project h2 {
     color: white;
     margin-bottom: 15px;
+    font-size: 1.6rem;
 }
 
 .project p {
-    color: darkgoldenrod;
+    color: #d4af37;
     line-height: 1.6;
     margin-bottom: 20px;
+    font-size: 1.05rem;
 }
 
 .project a {
     text-decoration: none;
     color: #00bfff;
     font-weight: bold;
+    font-size: 1.1rem;
+    transition: 0.3s;
+}
+
+.project a:hover {
+    color: white;
+    padding-left: 5px;
 }
 
 .project:hover {
-    transform: translateY(-8px);
-	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    border-color: #00bfff;
 }
 
-
-/* Contact */
-
+/* ======================================== */
+/* CONTACT */
+/* ======================================== */
 .contact {
-    padding: 100px 80px;
+    text-align: center;
 }
 
 .contact h1 {
-    text-align: center;
     font-size: 3rem;
     color: #00bfff;
     margin-bottom: 15px;
 }
 
 .contact-description {
-    text-align: center;
     color: darkgoldenrod;
     margin-bottom: 50px;
+    font-size: 1.2rem;
 }
 
 .contact-box {
     display: flex;
-    justify-content: space-between;
-    gap: 50px;
+    justify-content: center;
+    gap: 60px;
     flex-wrap: wrap;
+    text-align: left;
 }
 
 .contact-info {
     flex: 1;
-    color: white;
+    min-width: 300px;
 }
 
 .contact-info h2 {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     color: #00bfff;
+    font-size: 2rem;
 }
 
 .contact-info p {
     margin-bottom: 15px;
-    color: darkgoldenrod;
+    color: white;
+    font-size: 1.2rem;
 }
 
 .contact-form {
     flex: 1;
+    min-width: 320px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -324,252 +371,191 @@ body {
 
 .contact-form input,
 .contact-form textarea {
-    padding: 15px;
-    border: 2px solid #00bfff;
+    padding: 18px;
+    border: 2px solid rgba(0, 191, 255, 0.3);
     border-radius: 10px;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.05);
     color: white;
-    font-size: 16px;
+    font-size: 18px;
+    transition: 0.3s;
+    width: 100%;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #00bfff;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .contact-form textarea {
-    height: 150px;
-    resize: none;
+    height: 160px;
+    resize: vertical;
 }
 
 .contact-form button {
-    padding: 15px;
+    padding: 18px;
     border: none;
     border-radius: 10px;
     background: #00bfff;
     color: white;
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: 600;
     cursor: pointer;
     transition: 0.3s;
 }
 
 .contact-form button:hover {
     background: darkgoldenrod;
+    color: #111;
 }
 
-/* =========================================
-   PHONE RESPONSIVE DESIGN
-   ========================================= */
 
-@media screen and (max-width: 768px) {
+/* ======================================== */
+/* 📱 RESPONSIVE DESIGN: TABLETS & PHONES */
+/* ======================================== */
 
-    body {
-        width: 100%;
-        overflow-x: hidden;
+/* Tablet adjustments */
+@media screen and (max-width: 1024px) {
+    .navbar, .hero, section {
+        padding-left: 40px;
+        padding-right: 40px;
     }
+    .hero h1 { font-size: 2.5rem; }
+    .hero h2 { font-size: 1.5rem; }
+    .darius-image img { width: 280px; }
+    .logo img { height: 90px; }
+    .nav-links a { font-size: 20px; }
+}
 
-
-    /* Navigation */
-
+/* Mobile adjustments - Desktop-like layout */
+@media screen and (max-width: 768px) {
+    
+    /* Keep navbar horizontal like desktop */
     .navbar {
-        gap: 15px;
+        flex-direction: row; /* Changed from column */
+        padding: 15px 30px;
+        gap: 30px;
         justify-content: space-between;
-        padding: 0 10px;
     }
 
     .logo img {
-        height: 65px;
+        height: 70px; /* Smaller but visible */
     }
 
     .nav-links {
-        margin-left: 0;
-        gap: 10px;
-        padding: 0;
-        flex-wrap: wrap;
-        justify-content: center;
+        gap: 15px;
+        flex-wrap: nowrap; /* Keep in one line */
+        justify-content: flex-start;
     }
 
     .nav-links a {
-        font-size: 14px;
+        font-size: 16px; /* Smaller to fit */
+        white-space: nowrap;
     }
 
-
-    /* Home */
-
+    /* Keep hero layout like desktop (text left, image right) */
     .hero {
-        position: relative;
-        min-height: 100vh;
-        height: auto;
-        padding: 0 20px;
-        display: flex;
-        align-items: center;
+        flex-direction: row; /* Changed from column */
+        text-align: left; /* Changed from center */
+        padding: 40px 30px;
+        min-height: auto;
+        align-items: center; /* Center vertically */
+        gap: 30px; /* Space between text and image */
     }
 
     .hero-content {
-        max-width: 65%;
+        max-width: 55%; /* Take up left side */
+        text-align: left;
     }
 
-    .greeting {
-        font-size: 1rem;
-        margin-bottom: 5px;
+    .hero h1 { 
+        font-size: 1.8rem; 
+        margin-bottom: 10px;
     }
-
-    .hero h1 {
-        font-size: 1.5rem;
+    
+    .hero h2 { 
+        font-size: 1.1rem;
         margin-bottom: 15px;
     }
 
-    .hero h2 {
-        font-size: 1.1rem;
-        margin-bottom: 18px;
+    .greeting {
+        font-size: 1.2rem;
     }
-
+    
     .intro {
-        font-size: 0.9rem;
-        line-height: 1.5;
+        font-size: 0.95rem;
         margin-bottom: 20px;
     }
 
     .btn {
-        font-size: 13px;
-        padding: 10px 20px;
+        padding: 12px 30px;
+        font-size: 16px;
     }
-
-    /* First image positioned horizontally
-       beside the Contact Me button */
-
+    
     .darius-image {
-        position: absolute;
-        right: 15px;
-        bottom: 25%;
-        margin: 0;
+        margin-top: 0;
+        flex: 0 0 40%; /* Take up right side */
+        display: flex;
+        justify-content: flex-end;
     }
-
+    
     .darius-image img {
-        width: 85px;
-        height: auto;
-        margin-bottom: 0;
-        border-radius: 600px;
+        width: 180px; /* Smaller for mobile */
     }
 
-
-    /* About */
-
+    /* About Section - Keep side by side if possible */
     .about {
-        flex-direction: column;
-        align-items: center;
-        padding: 60px 25px;
-        gap: 25px;
-        text-align: center;
-    }
-
-    .about-image {
-        width: 100%;
-    }
-
-    .about-image img {
-        width: 190px;
-    }
-
-    .about-content {
-        width: 100%;
-        max-width: 600px;
-    }
-
-    .about h2 {
-        font-size: 2rem;
-    }
-
-    .about p {
-        font-size: 1rem;
-        line-height: 1.7;
-    }
-
-
-    /* Skills */
-
-    .skills {
-        padding: 60px 20px;
-    }
-
-    .skills h1 {
-        font-size: 2.2rem;
-    }
-
-    .description {
-        font-size: 1rem;
-        line-height: 1.6;
-    }
-
-    .ability-content {
-        gap: 15px;
-    }
-
-    .skill {
-        font-size: 15px;
-        padding: 10px 18px;
-    }
-
-
-    /* Projects */
-
-    .projects {
-        padding: 60px 20px;
-    }
-
-    .projects h1 {
-        font-size: 2.2rem;
-    }
-
-    .describe-projects {
-        font-size: 1rem;
-        line-height: 1.6;
-        margin-bottom: 35px;
-    }
-
-    .project-box {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-
-    .project {
-        width: 100%;
-        max-width: 320px;
-        box-sizing: border-box;
-        padding: 25px;
-    }
-
-    .project h2 {
-        font-size: 1.4rem;
-    }
-
-    .project p {
-        font-size: 1rem;
-        line-height: 1.6;
-    }
-
-
-    /* Contact */
-
-    .contact {
-        padding: 60px 20px;
-    }
-
-    .contact h1 {
-        font-size: 2.2rem;
-    }
-
-    .contact-description {
-        font-size: 1rem;
-        line-height: 1.6;
-    }
-
-    .contact-box {
-        display: flex;
-        flex-direction: column;
+        flex-direction: row; /* Keep horizontal */
+        padding: 60px 30px;
         gap: 30px;
     }
 
-    .contact-info,
-    .contact-form {
-        width: 100%;
+    .about-image {
+        flex: 0 0 45%;
+    }
+
+    .about-image img {
+        max-width: 100%;
+    }
+
+    .about-content {
+        flex: 0 0 50%;
+        text-align: left;
+    }
+
+    .about h2 { 
+        font-size: 1.8rem; 
+    }
+    
+    .about p { 
+        font-size: 1rem; 
+    }
+
+    /* Skills Section */
+    .skills { padding: 60px 30px; }
+    .skills h1 { font-size: 2rem; }
+    .description { font-size: 1rem; }
+    .skill { font-size: 16px; padding: 10px 20px; }
+
+    /* Projects Section */
+    .projects { padding: 60px 30px; }
+    .projects h1 { font-size: 2rem; }
+    .project { width: 100%; max-width: 400px; }
+
+    /* Contact Section */
+    .contact { padding: 60px 30px; }
+    .contact h1 { font-size: 2rem; }
+    
+    .contact-box {
+        flex-direction: row; /* Keep side by side */
+        gap: 30px;
+        text-align: left;
+    }
+
+    .contact-info { 
+        text-align: left;
+        flex: 0 0 45%;
     }
 
     .contact-info h2 {
@@ -578,26 +564,106 @@ body {
 
     .contact-info p {
         font-size: 1rem;
-        word-wrap: break-word;
     }
 
-    .contact-form {
-        gap: 15px;
+    .contact-form { 
+        width: auto;
+        flex: 0 0 50%;
     }
 
     .contact-form input,
     .contact-form textarea {
-        width: 100%;
-        box-sizing: border-box;
-        font-size: 15px;
-    }
-
-    .contact-form textarea {
-        height: 120px;
+        font-size: 16px;
+        padding: 12px;
     }
 
     .contact-form button {
         font-size: 16px;
+        padding: 12px;
+    }
+}
+
+/* Very small phones - Stack only when absolutely necessary */
+@media screen and (max-width: 480px) {
+    .navbar {
+        padding: 10px 20px;
+        gap: 20px;
     }
 
+    .logo img {
+        height: 60px;
+    }
+
+    .nav-links {
+        gap: 10px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    .hero {
+        padding: 30px 20px;
+        gap: 20px;
+    }
+
+    .hero-content {
+        max-width: 50%;
+    }
+
+    .hero h1 { 
+        font-size: 1.5rem; 
+    }
+    
+    .hero h2 { 
+        font-size: 0.95rem; 
+    }
+
+    .greeting {
+        font-size: 1rem;
+    }
+    
+    .intro {
+        font-size: 0.85rem;
+    }
+
+    .btn {
+        padding: 10px 25px;
+        font-size: 14px;
+    }
+    
+    .darius-image {
+        flex: 0 0 45%;
+    }
+    
+    .darius-image img {
+        width: 140px;
+    }
+
+    /* Stack about on very small screens */
+    .about {
+        flex-direction: column;
+    }
+
+    .about-image,
+    .about-content {
+        flex: 1 1 100%;
+    }
+
+    .about-image img {
+        max-width: 250px;
+    }
+
+    /* Stack contact on very small screens */
+    .contact-box {
+        flex-direction: column;
+    }
+
+    .contact-info,
+    .contact-form {
+        flex: 1 1 100%;
+    }
+
+    .hero h2 { font-size: 1.1rem; }
+    .nav-links a { font-size: 13px; }
 }
