@@ -476,11 +476,12 @@ section {
         font-size: 16px;
     }
 
-    /* 2. Hero Section (Stacked vertically, Image on top) */
+    /* 2. Hero Section (Image on top using column-reverse) */
     .hero {
         padding-top: 100px;
-        flex-direction: column; /* Stack elements vertically */
-        align-items: center;    /* Center everything */
+        display: flex;
+        flex-direction: column-reverse; /* MAGIC: Flips the order so the image goes to the top */
+        align-items: center;    
         text-align: center;
         gap: 20px;
     }
@@ -489,9 +490,7 @@ section {
         max-width: 100%;
     }
 
-    /* THE MAGIC TRICK: Order property moves the image above the text */
     .darius-image {
-        order: -1; 
         flex: none;
         margin-bottom: 10px;
         justify-content: center;
