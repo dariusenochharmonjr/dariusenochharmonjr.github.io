@@ -476,14 +476,17 @@ section {
         font-size: 16px;
     }
 
-    /* 2. Hero Section (Image on top using column-reverse) */
+    /* 2. Hero Section (Grouped together, Image on top) */
     .hero {
         padding-top: 100px;
         display: flex;
-        flex-direction: column-reverse; /* MAGIC: Flips the order so the image goes to the top */
+        flex-direction: column-reverse; /* Keeps image on top */
         align-items: center;    
         text-align: center;
         gap: 20px;
+        
+        /* THE FIX: This pulls the text up to sit right below the image */
+        justify-content: center; 
     }
 
     .hero-content {
