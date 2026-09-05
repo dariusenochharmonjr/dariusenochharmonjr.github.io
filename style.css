@@ -506,30 +506,37 @@ section {
 
     /* About Section - Keep side by side if possible */
     .about {
-        flex-direction: row; /* Keep horizontal */
+        flex-direction: column; /* Keep horizontal */
         padding: 60px 30px;
-        gap: 30px;
+        gap: 40px;
+		text-align: center; /* Center text for mobile */
     }
 
     .about-image {
-        flex: 0 0 45%;
+        flex: none;
+		width: 100%;
+		display: flex;
+		justify-content: center;
     }
 
     .about-image img {
-        max-width: 100%;
+        max-width: 280px; /* Smaller for mobile */
+		width: 100%;
     }
 
     .about-content {
-        flex: 0 0 50%;
-        text-align: left;
+        width: 100%;
+        text-align: center; /* Center text for mobile */
     }
 
     .about h2 { 
-        font-size: 1.8rem; 
+        font-size: 2rem; 
+		margin-bottom: 20px;
     }
     
     .about p { 
         font-size: 1rem; 
+		line-height: 1.6;
     }
 
     /* Skills Section */
