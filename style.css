@@ -7,6 +7,14 @@
     box-sizing: border-box;
 }
 
+/* ======================================== */
+/* HTML & BODY (Scroll Snapping) */
+/* ======================================== */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px; /* Prevents navbar from covering section titles */
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-image: url("background.JPG");
@@ -16,22 +24,38 @@ body {
     background-attachment: fixed;
     color: white;
     overflow-x: hidden;
+    
+    /* Full Screen Scroll Snapping */
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
 }
 
 /* ======================================== */
-/* NAVIGATION (Desktop - Balanced Size) */
+/* NAVIGATION (Fixed at the top) */
 /* ======================================== */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 80px;
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(5px);
+    
+    /* UPDATED: Sleek dark background with a subtle blue accent line */
+    background: transparent; 
+    backdrop-filter: blur(1px);
+    
+    
+    /* Fixed Position */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background 0.3s ease;
 }
 
 .logo img {
-    height: 100px; /* Reduced from 150px - better proportion */
+    height: 100px;
     width: auto;
     display: block;
 }
@@ -45,29 +69,45 @@ body {
 .nav-links a {
     text-decoration: none;
     color: white;
-    font-size: 22px; /* Reduced from 24px */
+    font-size: 22px;
     font-weight: 600;
     transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: #009acd;
+    color: #00bfff;
+}
+
+/* ======================================== */
+/* SECTIONS GENERAL (Full Screen Snapping) */
+/* ======================================== */
+section {
+    padding: 120px 80px 80px;
+    min-height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+}
+
+.section-title {
+    color: #00bfff;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    font-weight: 600;
 }
 
 /* ======================================== */
 /* HERO SECTION */
 /* ======================================== */
 .hero {
-    position: relative;
-    min-height: calc(100vh - 140px); /* Account for navbar height */
-    display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 60px 80px 80px; /* Better spacing */
+    gap: 40px;
 }
 
 .hero-content {
-    max-width: 600px;
+    max-width: 55%;
     z-index: 2;
 }
 
@@ -120,7 +160,9 @@ body {
 }
 
 .darius-image {
-    position: relative;
+    flex: 0 0 40%;
+    display: flex;
+    justify-content: flex-end;
     z-index: 1;
 }
 
@@ -139,30 +181,14 @@ body {
 }
 
 /* ======================================== */
-/* SECTIONS GENERAL */
-/* ======================================== */
-section {
-    padding: 100px 80px;
-}
-
-.section-title {
-    color: #00bfff;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-
-/* ======================================== */
 /* ABOUT ME */
 /* ======================================== */
 .about {
-    display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 60px;
     background: rgba(0, 0, 0, 0.4);
+    flex-direction: row;
 }
 
 .about-image {
@@ -205,6 +231,8 @@ section {
 /* ======================================== */
 .skills {
     text-align: center;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .skills h1 {
@@ -254,6 +282,8 @@ section {
 .projects {
     background: rgba(0, 0, 0, 0.4);
     text-align: center;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .projects h1 {
@@ -322,6 +352,8 @@ section {
 /* ======================================== */
 .contact {
     text-align: center;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .contact h1 {
@@ -342,6 +374,7 @@ section {
     gap: 60px;
     flex-wrap: wrap;
     text-align: left;
+    width: 100%;
 }
 
 .contact-info {
@@ -417,260 +450,119 @@ section {
 
 /* Tablet adjustments */
 @media screen and (max-width: 1024px) {
-    .navbar, .hero, section {
+    .navbar, section {
         padding-left: 40px;
         padding-right: 40px;
     }
-    .hero h1 { font-size: 2.5rem; }
-    .hero h2 { font-size: 1.5rem; }
-    .darius-image img { width: 280px; }
-    .logo img { height: 90px; }
-    .nav-links a { font-size: 20px; }
+    .hero h1 { font-size: 2.8rem; }
+    .darius-image img { width: 260px; } 
 }
 
-/* Mobile adjustments - Desktop-like layout */
+/* Mobile adjustments */
 @media screen and (max-width: 768px) {
     
-    /* Keep navbar horizontal like desktop */
+    /* 1. Navbar stays horizontal */
     .navbar {
-        flex-direction: row; /* Changed from column */
         padding: 15px 30px;
-        gap: 30px;
-        justify-content: space-between;
+        gap: 20px;
     }
 
     .logo img {
-        height: 70px; /* Smaller but visible */
+        height: 70px; 
     }
 
     .nav-links {
         gap: 15px;
-        flex-wrap: nowrap; /* Keep in one line */
-        justify-content: flex-start;
     }
 
     .nav-links a {
-        font-size: 16px; /* Smaller to fit */
-        white-space: nowrap;
+        font-size: 16px;
     }
 
-    /* Keep hero layout like desktop (text left, image right) */
+    /* 2. Hero Section (Side-by-side) */
     .hero {
-        flex-direction: row; /* Changed from column */
-        text-align: left; /* Changed from center */
-        padding: 40px 30px;
-        min-height: auto;
-        align-items: center; /* Center vertically */
-        gap: 30px; /* Space between text and image */
+        padding-top: 100px;
+        flex-direction: row;
+        gap: 20px;
     }
 
     .hero-content {
-        max-width: 55%; /* Take up left side */
-        text-align: left;
+        max-width: 55%;
     }
 
-    .hero h1 { 
-        font-size: 1.8rem; 
-        margin-bottom: 10px;
-    }
-    
-    .hero h2 { 
-        font-size: 1.1rem;
-        margin-bottom: 15px;
-    }
-
-    .greeting {
-        font-size: 1.2rem;
-    }
-    
-    .intro {
-        font-size: 0.95rem;
-        margin-bottom: 20px;
-    }
-
-    .btn {
-        padding: 12px 30px;
-        font-size: 16px;
-    }
+    .hero h1 { font-size: 1.8rem; }
+    .hero h2 { font-size: 1.1rem; }
+    .greeting { font-size: 1.2rem; }
+    .intro { font-size: 0.95rem; margin-bottom: 20px; }
+    .btn { padding: 12px 25px; font-size: 16px; }
     
     .darius-image {
-        margin-top: 0;
-        flex: 0 0 40%; /* Take up right side */
-        display: flex;
+        flex: 0 0 40%;
         justify-content: flex-end;
     }
     
     .darius-image img {
-        width: 180px; /* Smaller for mobile */
+        width: 180px; 
     }
 
-    /* About Section - Keep side by side if possible */
+    /* 3. About Section (VERTICAL: Image First) */
     .about {
-        flex-direction: column; /* Keep horizontal */
-        padding: 60px 30px;
-        gap: 40px;
-		text-align: center; /* Center text for mobile */
+        flex-direction: column;
+        padding-top: 100px;
+        gap: 30px;
+        text-align: center;
     }
 
     .about-image {
         flex: none;
-		width: 100%;
-		display: flex;
-		justify-content: center;
-    }
-
-    .about-image img {
-        max-width: 280px; /* Smaller for mobile */
-		width: 100%;
-    }
-
-    .about-content {
         width: 100%;
-        text-align: center; /* Center text for mobile */
-    }
-
-    .about h2 { 
-        font-size: 2rem; 
-		margin-bottom: 20px;
-    }
-    
-    .about p { 
-        font-size: 1rem; 
-		line-height: 1.6;
-    }
-
-    /* Skills Section */
-    .skills { padding: 60px 30px; }
-    .skills h1 { font-size: 2rem; }
-    .description { font-size: 1rem; }
-    .skill { font-size: 16px; padding: 10px 20px; }
-
-    /* Projects Section */
-    .projects { padding: 60px 30px; }
-    .projects h1 { font-size: 2rem; }
-    .project { width: 100%; max-width: 400px; }
-
-    /* Contact Section */
-    .contact { padding: 60px 30px; }
-    .contact h1 { font-size: 2rem; }
-    
-    .contact-box {
-        flex-direction: row; /* Keep side by side */
-        gap: 30px;
-        text-align: left;
-    }
-
-    .contact-info { 
-        text-align: left;
-        flex: 0 0 45%;
-    }
-
-    .contact-info h2 {
-        font-size: 1.5rem;
-    }
-
-    .contact-info p {
-        font-size: 1rem;
-    }
-
-    .contact-form { 
-        width: auto;
-        flex: 0 0 50%;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-        font-size: 16px;
-        padding: 12px;
-    }
-
-    .contact-form button {
-        font-size: 16px;
-        padding: 12px;
-    }
-}
-
-/* Very small phones - Stack only when absolutely necessary */
-@media screen and (max-width: 480px) {
-    .navbar {
-        padding: 10px 20px;
-        gap: 20px;
-    }
-
-    .logo img {
-        height: 60px;
-    }
-
-    .nav-links {
-        gap: 10px;
-    }
-
-    .nav-links a {
-        font-size: 14px;
-    }
-
-    .hero {
-        padding: 30px 20px;
-        gap: 20px;
-    }
-
-    .hero-content {
-        max-width: 50%;
-    }
-
-    .hero h1 { 
-        font-size: 1.5rem; 
-    }
-    
-    .hero h2 { 
-        font-size: 0.95rem; 
-    }
-
-    .greeting {
-        font-size: 1rem;
-    }
-    
-    .intro {
-        font-size: 0.85rem;
-    }
-
-    .btn {
-        padding: 10px 25px;
-        font-size: 14px;
-    }
-    
-    .darius-image {
-        flex: 0 0 45%;
-    }
-    
-    .darius-image img {
-        width: 140px;
-    }
-
-    /* Stack about on very small screens */
-    .about {
-        flex-direction: column;
-    }
-
-    .about-image,
-    .about-content {
-        flex: 1 1 100%;
+        justify-content: center;
     }
 
     .about-image img {
         max-width: 250px;
     }
 
-    /* Stack contact on very small screens */
+    .about-content {
+        width: 100%;
+        text-align: center;
+    }
+
+    .about h2 { font-size: 2rem; }
+    .about p { font-size: 1rem; }
+
+    /* 4. Skills Section */
+    .skills { padding-top: 100px; }
+    .skills h1 { font-size: 2rem; }
+    .skill { font-size: 16px; padding: 10px 20px; }
+
+    /* 5. Projects Section */
+    .projects { padding-top: 100px; }
+    .projects h1 { font-size: 2rem; }
+    .project { width: 100%; max-width: 400px; }
+
+    /* 6. Contact Section */
+    .contact { padding-top: 100px; }
+    .contact h1 { font-size: 2rem; }
+    
     .contact-box {
         flex-direction: column;
+        gap: 30px;
+        text-align: center;
     }
 
-    .contact-info,
-    .contact-form {
-        flex: 1 1 100%;
-    }
+    .contact-info { text-align: center; width: 100%; }
+    .contact-form { width: 100%; }
+}
 
-    .hero h2 { font-size: 1.1rem; }
-    .nav-links a { font-size: 13px; }
+/* Very small phones */
+@media screen and (max-width: 480px) {
+    .navbar { padding: 10px 20px; }
+    .logo img { height: 60px; }
+    .nav-links a { font-size: 14px; }
+    
+    .hero { padding-top: 90px; }
+    .hero h1 { font-size: 1.5rem; }
+    .hero h2 { font-size: 0.95rem; }
+    .darius-image img { width: 140px; }
 }
