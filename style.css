@@ -12,7 +12,7 @@
 /* ======================================== */
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 100px; /* Prevents navbar from covering section titles */
+    scroll-padding-top: 100px;
 }
 
 body {
@@ -25,14 +25,13 @@ body {
     color: white;
     overflow-x: hidden;
     
-    /* Full Screen Scroll Snapping */
     height: 100vh;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
 }
 
 /* ======================================== */
-/* NAVIGATION (Fixed at the top) */
+/* NAVIGATION (Transparent & Fixed) */
 /* ======================================== */
 .navbar {
     display: flex;
@@ -40,12 +39,10 @@ body {
     align-items: center;
     padding: 20px 80px;
     
-    /* UPDATED: Sleek dark background with a subtle blue accent line */
     background: transparent; 
-    backdrop-filter: blur(1px);
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid rgba(0, 191, 255, 0.2);
     
-    
-    /* Fixed Position */
     position: fixed;
     top: 0;
     left: 0;
@@ -79,7 +76,7 @@ body {
 }
 
 /* ======================================== */
-/* SECTIONS GENERAL (Full Screen Snapping) */
+/* SECTIONS GENERAL */
 /* ======================================== */
 section {
     padding: 120px 80px 80px;
@@ -479,15 +476,29 @@ section {
         font-size: 16px;
     }
 
-    /* 2. Hero Section (Side-by-side) */
+    /* 2. Hero Section (Stacked vertically, Image on top) */
     .hero {
         padding-top: 100px;
-        flex-direction: row;
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center;    /* Center everything */
+        text-align: center;
         gap: 20px;
     }
 
     .hero-content {
-        max-width: 55%;
+        max-width: 100%;
+    }
+
+    /* THE MAGIC TRICK: Order property moves the image above the text */
+    .darius-image {
+        order: -1; 
+        flex: none;
+        margin-bottom: 10px;
+        justify-content: center;
+    }
+    
+    .darius-image img {
+        width: 180px; 
     }
 
     .hero h1 { font-size: 1.8rem; }
@@ -495,15 +506,6 @@ section {
     .greeting { font-size: 1.2rem; }
     .intro { font-size: 0.95rem; margin-bottom: 20px; }
     .btn { padding: 12px 25px; font-size: 16px; }
-    
-    .darius-image {
-        flex: 0 0 40%;
-        justify-content: flex-end;
-    }
-    
-    .darius-image img {
-        width: 180px; 
-    }
 
     /* 3. About Section (VERTICAL: Image First) */
     .about {
@@ -564,5 +566,5 @@ section {
     .hero { padding-top: 90px; }
     .hero h1 { font-size: 1.5rem; }
     .hero h2 { font-size: 0.95rem; }
-    .darius-image img { width: 140px; }
+    .darius-image img { width: 150px; }
 }
